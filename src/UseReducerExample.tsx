@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import React from "react";
 import Nav from "./Nav";
+import useReducerWithDevTools from "./useReducerWithDevTools";
 
 interface State {
   isFetching: boolean;
@@ -55,7 +56,11 @@ const Component = ({
   const [
     { isSuccessful, isFetching, userIdValue, errorMessage, result },
     dispatch,
-  ] = React.useReducer(slice.reducer, initialState);
+  ] = useReducerWithDevTools(
+    slice.reducer,
+    initialState,
+    "use reducer example"
+  );
 
   const fetchUserInfo = () => {
     dispatch(slice.actions.fetching());

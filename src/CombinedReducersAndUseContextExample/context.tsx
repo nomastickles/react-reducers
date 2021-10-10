@@ -1,9 +1,9 @@
 import { AnyAction, combineReducers } from "@reduxjs/toolkit";
 import React from "react";
-
-import * as SomeComplexNestedFormState from "./SomeComplexNestedForm/state";
+import useReducerWithDevTools from "../useReducerWithDevTools";
 import * as SomeComplexNestedCardState from "./SomeComplexNestedCard/state";
 import * as SomeComplexNestedErrorDisplayState from "./SomeComplexNestedErrorDisplay/state";
+import * as SomeComplexNestedFormState from "./SomeComplexNestedForm/state";
 
 const rootReducer = combineReducers({
   [SomeComplexNestedFormState.slice.name]:
@@ -34,7 +34,11 @@ interface Props {
 }
 
 const ContextProvider = ({ children }: Props): React.ReactElement => {
-  const [state, dispatch] = React.useReducer(rootReducer, initialState);
+  const [state, dispatch] = useReducerWithDevTools(
+    rootReducer,
+    initialState,
+    "useReducer (multiple) + useContext"
+  );
   return (
     <DispatchContext.Provider value={dispatch}>
       <StateContext.Provider value={state}>{children}</StateContext.Provider>

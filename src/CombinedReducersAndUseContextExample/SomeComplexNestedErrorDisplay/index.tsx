@@ -1,12 +1,6 @@
 import React from "react";
 import * as actions from "../actions";
 import { DispatchContext, StateContext } from "../context";
-import { ErrorState } from "./state";
-
-interface Props extends ErrorState {
-  userIdValue: string;
-}
-
 
 const ErrorDisplay = () => {
   const dispatch = React.useContext(DispatchContext);
@@ -44,6 +38,5 @@ const ErrorDisplay = () => {
     </article>
   );
 };
-
 
 export default ErrorDisplay;

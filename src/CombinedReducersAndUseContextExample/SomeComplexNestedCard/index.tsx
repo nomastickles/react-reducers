@@ -22,7 +22,7 @@ const Card = React.memo((props: CardState) => {
         <div className="media">
           <div className="media-left">
             <figure className="image is-48x48">
-              <img src={props.imgLink} alt="Placeholder image" />
+              <img src={props.imgLink} alt="Placeholder" />
             </figure>
           </div>
           <div className="media-content">
